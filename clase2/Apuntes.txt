@@ -1,0 +1,96 @@
+
+Clase2
+
+-- Para filtrar la busqueda por campos, es decir, por columnas
+    SELECT * FROM nombre_de_tabla;
+    SELECT prop1 FROM nombre_de_tabla;
+    SELECT prop1, prop2 FROM nombre_de_tabla;
+    SELECT prop1, ..., propN FROM nombre_de_tabla;
+# Siendo lo que esta después del SELECT lo que se muestra.
+
+-- Para mostrar cualquier string o valo y operacion matematica
+    SELECT cualquier_valor;
+    SELECT (1200+2200+3200+4200)*0.95/4;
+    SELECT *, prop1, prop2*100, 'cualquier_cosa';
+
+-- Para filtrar lo mostrado por valor de una celda(prop)
+    SELECT * FROM nombre_de_tabla WHERE prop1 = valor_1;
+
+-- Para sumar todos los valores de un campo en una tabla
+    SELECT SUM(propiedad_numerica) FROM nombre_de_tabla;
+
+-- Para ordenar los resultados de una busqueda
+    SELECT * FROM nombre_de_tabla ORDER BY prop;                # Orden alfabético. Ascendente. A-Z
+    SELECT * FROM nombre_de_tabla ORDER BY prop ASC;
+    SELECT * FROM nombre_de_tabla ORDER BY prop DESC;           # Orden alfabético. Descendiente. Z-A
+    SELECT + FROM nombre_de_tabla ORDER BY prop1 ASC, prop2 DESC;
+
+-- Para encontrar una cantidad especificada de primeros resultados
+    SELECT * FROM nombre_de_tabla LIMIT cantidad_de_resultados;
+    SELECT * FROM nombre_de_tabla LIMIT numero_del_resultado_para_partir, cantidad_de_resultados_obtenidos;
+    # Que sería lo mismo que...
+    SELECT * FROM nombre_de_tabla LIMIT cantidad_de_resultados_obtenidos
+     OFFSET numero_del_resultado_para_partir;
+
+-- Para denotar propiedad del tipo DATE
+    (
+        prop DATE,
+    )
+
+-- Para concatenar registros de campos
+    SELECT concat(prop1, prop2) FROM nombre_de_tabla;
+
+-- Para concatenar y delimitar entre los terminos concatenados              # ws -> with separator
+    SELECT concat_ws( <delimitador>,prop1, prop2) FROM nombre_de_tabla;
+
+-- Para mostrar una prop en minusculas                                      # Solo toma una prop
+    SELECT lower(prop) FROM nombre_de_tabla;
+
+-- Para traer caracter en particular de una celda
+    SELECT (LEFT(prop, posicion_de_caracter)) FROM vendedores;
+
+-- Para redondear el resultado de la busqueda
+    SELECT round(prop) FROM nombre_de_tabla;
+    SELECT round(prop, cantidad_de_decimales) FROM nombre_de_tabla;
+
+-- Para mostrar datos de las props de tipo DATE
+    SELECT YEAR(prop) FROM nombre_de_tabla;
+    SELECT MONTH(prop) FROM nombre_de_tabla;
+    SELECT DAY(prop) FROM nombre_de_tabla;
+
+-- Para mostrar el dia actual
+    SELECT curdate();                                                       # Para traerlo como valor se usa el curren_date()
+
+-- Para mostrar la hora actual
+    SELECT curtime();
+
+-- Para mostrar la diferencia de dias entre dos fechas
+    SELECT datediff(fecha1, fecha2);                                        # Formato de fecha en YY-MM-DD
+
+-- Para buscar filtrando por un campo mostrando los datos del mismo registro
+    SELECT prop FROM nombre_de_tabla WHERE prop_filtro = valor_filtro;      # Usualmente es una primary key lo que buscamos
+
+# Existen operadores logicos que podemos usar de manera comparativa, siendo estos:
+    > menor que
+    < mayor que
+    = igual que
+    <> distinto que
+# Por ejemplo
+    SELECT prop FROM nombre_de_tabla WHERE prop_filtro >= valor_filtro;
+
+-- Para hacer comparaciones a traves de los comandos
+    SELECT * FROM nombre_de_tabla WHERE prop_filtro > valor_filtro1 AND prop_filtro < valor_filtro2;
+    SELECT * FROM nombre_de_tabla WHERE prop_filtro1 = valor_filtro1 AND prop_filtro2 = valor_filtro2;
+    SELECT * FROM nombre_de_tabla WHERE prop_filtro BETWEEN valor_filtro1 AND valor_filtro2;
+    SELECT * FROM nombre_de_tabla WHERE prop_filtro1 = valor_filtro1 OR prop_filtro2 = valor_filtro2;
+    SELECT * FROM nombre_de_tabla WHERE prop_filtro IN(valor_filtro1, ..., valor_filtroN);              # Incluyente
+    SELECT * FROM nombre_de_tabla WHERE prop_filtro NOT IN(valor_filtro1, ...,valor_filtroN);           # Excluyente
+
+-- Para mostrar resultado con busqueda por caracteres
+    SELECT * FROM nombre_de_tabla WHERE prop_filtro = %caracter%;
+
+-- Para buscar por propiedades nulas
+    SELECT * FROM nombre_de_tabla WHERE prop_filtro IS NULL;
+    SELECT * FROM nombre_de_tabla WHERE prop_filtro IS NOT NULL;
+
+-- Para SELECT prop_filtro FROM nombre_de_tabla 

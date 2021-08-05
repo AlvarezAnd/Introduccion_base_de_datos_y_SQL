@@ -1,0 +1,45 @@
+
+Clase1
+
+-- Para crear una base de datos
+	CREATE DATABASE <nombre_de_BBDD>;
+-- Para mostrar las bases de datos creadas
+	SHOW DATABASES;
+-- Para usar una base de datos creada
+	USE <nombre_de_BBDD>;
+-- Para mostrar la base de datos en uso actual
+	SELECT DATABASE();
+-- Para crear una tabla en la base de datos
+	CREATE TABLE <nombre_de_tabla> (
+		<propiedad1> <tipo_de_propiedad>,
+        .
+        .
+        .
+        <propiedadN> <tipo_de_propiedad>
+    );
+-- Para eliminar una tabla de la BBDD
+	DROP TABLE <nombre_de_tabla>;
+-- Para ingresar un registro
+	INSERT INTO <nombre_de_tabla> (<propiedad1>, ..., <propiedadN>)
+		VALUE (<valor1>, ..., <valorN>);
+-- Para ingresar un comentario:
+	-- Una linea
+		-- <Comentario>
+        # <Comentario>
+	-- varias lineas
+		/* <Comentario>
+        */
+-- Para que una propiedad se autocompleta sin el INSERT
+	(
+		<propiedad1> <tipo_de_propiedad> AUTO_INCREMENT,
+    )
+-- Para que una propiedad sea identificador propio de la tabla
+	(
+		<propiedad1> <tipo_de_propiedad> PRIMARY KEY,
+    )
+-- Para que no pueda ser null o estar vacia una celda de un registro
+	(
+		<propiedad1> <tipo_de_propiedad> NOT NULL,
+    )
+-- Para mostrar una tabla
+	SELECT * FROM <nombre_de_tabla>;
