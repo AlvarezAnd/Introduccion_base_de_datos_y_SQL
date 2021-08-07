@@ -1,0 +1,12 @@
+-- Para colocar/actualizar un dato en un registro
+    UPDATE nombre_de_tabla SET prop = nuevo_valor;                   # siendo el SET lo que coloca el nuevo valor
+    UPDATE nombre_de_tabla SET prop = nuevo_valor WHERE prop_filtro = valor_filtro; # Cuando no se especifica en que registro se cambia el dato, se coloca en todos los registros el nuevo valor en esa propiedad.
+
+-- Para crear un medio de seguridad para evitar alterar a mas de un registro de una tabla
+    SET SQL_SAFE_UPDATES = 0;                                         # Se debe realizar antes de cualquier UPDATE que se haga.
+
+-- Para eliminar un registro con el valor_filtro
+    DELETE FROM nombre_de_tabla WHERE prop_filtro = valor_filtro;     # Borra todo el registro a excepción del auto_increment
+
+-- Para eliminar el registro junto a su auto_increment
+    TRUNCATE TABLE nombre_de_tabla;
